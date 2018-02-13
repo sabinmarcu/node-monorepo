@@ -1,7 +1,25 @@
 {
-    "private": true,
-    "workspaces": ["packages/*"],
+	"private": true,
+	"workspaces": [
+		"packages/*"
+	],
 	"devDependencies": {
+		"@babel/preset-env": "^7.0.0-beta.40",
+		"@babel/preset-flow": "^7.0.0-beta.40",
+		"@babel/preset-react": "^7.0.0-beta.40",
+		"@babel/preset-stage-0": "^7.0.0-beta.40",
 		"lerna": "^2.8.0"
+	},
+	"dependencies": {
+		"@babel/core": "^7.0.0-beta.40",
+		"@babel/register": "^7.0.0-beta.40",
+		"babel-core": "^7.0.0-bridge.0",
+		"gulp": "^3.9.1",
+		"gulp-babel": "^7.0.1",
+		"gulp-watch": "^5.0.0"
+	},
+	"scripts": {
+		"babel:deps": "node -e \"console.log(((deps) => Object.keys(deps).map(d => d + '@' + deps[d]).join(' ') )(JSON.parse(require('fs').readFileSync('./packages/babel-preset/package.json', 'utf8')).dependencies))\"",
+		"babel:update": "npm install --save-dev `npm run -s babel:deps`"
 	}
 }
