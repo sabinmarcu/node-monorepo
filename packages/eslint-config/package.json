@@ -1,9 +1,10 @@
 {
   "name": "@sabinmarcu/eslint-config-all",
-  "version": "1.0.1-0",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
+  "private": false,
   "description": "",
   "main": "index.js",
   "scripts": {
