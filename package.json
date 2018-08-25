@@ -8,6 +8,7 @@
 		"@babel/preset-flow": "^7.0.0-beta.40",
 		"@babel/preset-react": "^7.0.0-beta.40",
 		"@babel/preset-stage-0": "^7.0.0-beta.40",
+		"babel-cli": "^6.26.0",
 		"lerna": "^2.8.0"
 	},
 	"dependencies": {
@@ -20,6 +21,9 @@
 	},
 	"scripts": {
 		"babel:deps": "node -e \"console.log(((deps) => Object.keys(deps).map(d => d + '@' + deps[d]).join(' ') )(JSON.parse(require('fs').readFileSync('./packages/babel-preset/package.json', 'utf8')).dependencies))\"",
-		"babel:update": "npm install --save-dev `npm run -s babel:deps`"
+		"babel:update": "yarn install -D `yarn run -s babel:deps`",
+		"prepublish:babel": "babel --no-babelrc packages/babel-preset/src --out-dir packages/babel-preset/lib",
+		"prepublish:gulp": "gulp",
+		"prepublish": "yarn prepublish:babel && yarn prepublish:gulp"
 	}
 }

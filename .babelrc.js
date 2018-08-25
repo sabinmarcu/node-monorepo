@@ -1,1 +1,1 @@
-module.exports = require(require('path').resolve(__dirname, 'packages/babel-preset'));
+module.exports = require('./packages/babel-preset');
